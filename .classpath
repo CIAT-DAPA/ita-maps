@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/xml/bind/jaxb-api/2.2/jaxb-api-2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/geotools/gt-shapefile/2.7-M3/gt-shapefile-2.7-M3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/geotools/gt-data/2.7-M3/gt-data-2.7-M3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/geotools/gt-main/2.7-M3/gt-main-2.7-M3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/geotools/gt-api/2.7-M3/gt-api-2.7-M3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/vividsolutions/jts/1.11/jts-1.11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xerces/xercesImpl/2.4.0/xercesImpl-2.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/geotools/gt-referencing/2.7-M3/gt-referencing-2.7-M3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/java3d/vecmath/1.3.2/vecmath-1.3.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/geotools/gt-metadata/2.7-M3/gt-metadata-2.7-M3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/opengis/geoapi/2.3-M1/geoapi-2.3-M1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/dev/jsr-275/jsr-275/1.0-beta-2/jsr-275-1.0-beta-2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/opengis/geoapi-pending/2.3-M1/geoapi-pending-2.3-M1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/jdom/jdom/1.0/jdom-1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/de/micromata/jak/JavaAPIforKml/2.2.0-SNAPSHOT/JavaAPIforKml-2.2.0-SNAPSHOT.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/sun/xml/bind/jaxb-impl/2.2/jaxb-impl-2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/sun/xml/bind/jaxb-xjc/2.2/jaxb-xjc-2.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xmlunit/xmlunit/1.2/xmlunit-1.2.jar"/>
+</classpath>
