@@ -5,8 +5,9 @@ import org.ciat.ita.maps.utils.PropertiesManager;
 
 public class ColorManagerFactory {
 	private static final String CONTINUOUS = "continuous";
-	private static final String FIXED = "fixedthreshold";
+	private static final String FIXED = "fixedthreshold";        
 	private static final String QUANTILE = "quantiles";
+        private static final String HARMONY = "harmony";
 
 	/**
 	 * Funcion que toma los valores del archivo de configuracion para determinar
@@ -44,11 +45,21 @@ public class ColorManagerFactory {
 		if (scaleType.equals(CONTINUOUS))
 			return new ContinousColorManager(rgbMin, rgbMax, min, max, raster
 					.getHeader().getNoData(), raster);
-
+                
 		if (scaleType.equals(FIXED)) {
 			float umbral = PropertiesManager.getInstance()
 					.getPropertiesAsFloat(colorType + ".scale.threshold");
-			FixedThresholdColorManager cm = new FixedThresholdColorManager(
+                       FixedThresholdColorManager cm = new FixedThresholdColorManager(
+					rgbMin, rgbMax, min, max, raster.getHeader().getNoData(),
+					umbral, raster);
+			cm.setThresholds(cm.createThresholds());
+			return cm;
+		}
+                
+                if (scaleType.equals(HARMONY)) {
+			float umbral = PropertiesManager.getInstance()
+					.getPropertiesAsFloat(colorType + ".scale.threshold");
+			HarmonyThresholdColorManager cm = new HarmonyThresholdColorManager(
 					rgbMin, rgbMax, min, max, raster.getHeader().getNoData(),
 					umbral, raster);
 			cm.setThresholds(cm.createThresholds());
