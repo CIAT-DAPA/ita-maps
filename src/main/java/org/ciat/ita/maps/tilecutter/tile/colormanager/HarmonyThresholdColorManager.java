@@ -13,7 +13,7 @@ import org.ciat.ita.maps.tilecutter.raster.Raster;
  */
 public class HarmonyThresholdColorManager extends HarmonyColorManager {
     
-    private float umbral;
+    
     /**
      * Constructor de la clase FixedThresholdColorManager
      * @param rgbMin valor de color minimo
@@ -24,10 +24,8 @@ public class HarmonyThresholdColorManager extends HarmonyColorManager {
      * @param umbral para el color discreto fijo
      */
     public HarmonyThresholdColorManager(float[] rgbMin, float[] rgbMax, float min, float max,
-            float NoData, float umbral,Raster raster) {
-        super(rgbMin, rgbMax, min, max, NoData, raster);
-        
-        this.umbral = umbral;
+            float NoData, float umbral,Raster raster, float grades) {
+        super(rgbMin, rgbMax, min, max, NoData, raster,umbral, grades);
     }
     
     @Override
@@ -52,10 +50,10 @@ public class HarmonyThresholdColorManager extends HarmonyColorManager {
         float[] umbrales = new float[size+1];
         
         for(int i = 0; i<umbrales.length;i++)
-            if((i+1)<umbrales.length)
+            if((i+2)<umbrales.length)
                 umbrales[i] = getMin()+umbral*(i+1);
             else
-                umbrales[i] = getMax()-1;
+                umbrales[i] = getMax();
         
         return umbrales;
     }

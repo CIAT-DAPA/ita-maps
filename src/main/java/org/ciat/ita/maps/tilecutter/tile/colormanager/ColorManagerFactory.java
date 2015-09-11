@@ -59,9 +59,11 @@ public class ColorManagerFactory {
                 if (scaleType.equals(HARMONY)) {
 			float umbral = PropertiesManager.getInstance()
 					.getPropertiesAsFloat(colorType + ".scale.threshold");
+                        float grades = PropertiesManager.getInstance()
+					.getPropertiesAsFloat(colorType + ".color.grades");
 			HarmonyThresholdColorManager cm = new HarmonyThresholdColorManager(
 					rgbMin, rgbMax, min, max, raster.getHeader().getNoData(),
-					umbral, raster);
+					umbral, raster, grades);
 			cm.setThresholds(cm.createThresholds());
 			return cm;
 		}
