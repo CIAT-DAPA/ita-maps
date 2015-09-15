@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package org.ciat.ita.maps.tilecutter.tile.colormanager;
 
 import java.awt.Color;
@@ -70,7 +70,7 @@ public abstract class HarmonyColorManager  extends ColorManager {
         * entonces a mover todos los bit de 2*8
         *
         * 0x03 << 16 = 0x030000
-        */  
+        */
         
         float[] hsb=Color.RGBtoHSB( (int)getRgbMin()[0], (int)getRgbMin()[1], (int)getRgbMin()[2], null);
         
@@ -106,83 +106,66 @@ public abstract class HarmonyColorManager  extends ColorManager {
         //graphics.drawString(descripcion, 5, (line - recHeight) / 2 + recHeight);
         
         int valorMinimo = (int) this.getMin();
-        int valorMax= (int) this.getMax();
+        //int valorMax= (int) this.getMax();
         
-        if(valorMax==1){
-            height = valorMax * line ;
-            for (int i = 0; i < umbrales.length; i+=2) {
-                if(valorMinimo!=0){
-                    Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
-                    graphics.setColor(color);
-                    graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
-                    graphics.setColor(Color.BLACK);
-                    graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
-                    ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + " " );
-                    cont += line;
-                }
-                valorMinimo = (int) umbrales[i];
-                
-            }
-            
-            return image;
-            
+        /*if(valorMax==1){
+        height = valorMax * line ;
+        for (int i = 0; i < umbrales.length; i+=2) {
+        if(valorMinimo!=0){
+        Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
+        graphics.setColor(color);
+        graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
+        graphics.setColor(Color.BLACK);
+        graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
+        ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + " " );
+        cont += line;
+        }
+        valorMinimo = (int) umbrales[i];
+        
+        }
+        
+        return image;
+        
         }
         else if(valorMax==2){
-            height = valorMax * line ;
-            for (int i = 0; i < umbrales.length; i++) {
-                if(valorMinimo!=0){
-                    Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
-                    graphics.setColor(color);
-                    graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
-                    graphics.setColor(Color.BLACK);
-                    graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
-                    ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + (int)umbrales[i] + " " );
-                    cont += line;
-                }
-                valorMinimo = (int) umbrales[i];
-            }
-            return image;
-            
+        height = valorMax * line ;
+        for (int i = 0; i < umbrales.length; i++) {
+        if(valorMinimo!=0){
+        Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
+        graphics.setColor(color);
+        graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
+        graphics.setColor(Color.BLACK);
+        graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
+        ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + (int)umbrales[i] + " " );
+        cont += line;
         }
-        else{
-            for (int i = 0; i < umbrales.length; i++) {
-                //System.out.println("umbrales "+umbrales.length+" valor i"+i + " umbral " + umbrales[i]);
-                if(valorMinimo!=0){
-                    
-                    if(i<=umbrales.length-2){
-                        //System.out.println(" umbral ");
-                        if(i!=umbrales.length-2){
-                            Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
-                            graphics.setColor(color);
-                            graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
-                            graphics.setColor(Color.BLACK);
-                            graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
-                            if(umbral!=1)
-                                ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + " - " +((int) umbrales[i]-1));
-                            else
-                                ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + "  " );
-                            cont += line;
-                        }                                
-                        else {
-                          //  System.out.println(" final ");
-                            Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
-                            graphics.setColor(color);
-                            graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
-                            graphics.setColor(Color.BLACK);
-                            graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
-                            if(umbral!=1)
-                                ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + " - " +((int) umbrales[i]));
-                            else
-                                ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + "  " );
-                            cont += line;
-                        }
-                    }
-                }
-                valorMinimo = (int) umbrales[i];
-                
-            }
-            return image;
+        valorMinimo = (int) umbrales[i];
         }
+        return image;
+        
+        }
+        else{*/
+        for (int i = 0; i < umbrales.length; i++) {
+            System.out.println("umbral " + umbrales[i]);
+            if(valorMinimo!=0){
+                Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
+                graphics.setColor(color);
+                graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
+                graphics.setColor(Color.BLACK);
+                graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
+                if(umbral!=1)
+                    ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + " - " +((int)((i+1)==umbrales.length ? umbrales[i] : (umbrales[i]-1) ) ));
+                else
+                    ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + "  " );
+                cont += line;
+            }
+            if(umbral==1 && (i+1)<umbrales.length)
+                valorMinimo = (int) umbrales[i+1];
+            else
+                valorMinimo = (int) umbrales[i];
+        }
+        return image;
+        //}
         
         
     }

@@ -34,9 +34,7 @@ public class HarmonyThresholdColorManager extends HarmonyColorManager {
         System.out.println(getMin());
         double fSize;
         if( getMax()-getMin()==0)
-            fSize = (getMax()+(2)-getMin())/umbral;
-        else if(getMax()-getMin()==1)
-            fSize = (getMax()+(1)-getMin())/umbral;
+            return new float[]{getMax()};        
         else
             fSize = (getMax()+(1)-getMin())/umbral;
         
@@ -47,14 +45,16 @@ public class HarmonyThresholdColorManager extends HarmonyColorManager {
         if(fSize != rSize)
             size++;
         
-        float[] umbrales = new float[size+1];
+        float[] umbrales = new float[size];
         
-        for(int i = 0; i<umbrales.length;i++)
-            if((i+2)<umbrales.length)
-                umbrales[i] = getMin()+umbral*(i+1);
-            else
+        for(int i = 0; i<umbrales.length;i++){
+            if((i+1)==umbrales.length)
                 umbrales[i] = getMax();
-        
+            else if(umbral==1)
+                umbrales[i] = getMin()+umbral*i;
+            else
+                umbrales[i] = getMin()+umbral*(i+1);
+        }
         return umbrales;
     }
     
