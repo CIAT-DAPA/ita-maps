@@ -72,13 +72,14 @@ public abstract class HarmonyColorManager  extends ColorManager {
         * 0x03 << 16 = 0x030000
         */
         
-        float[] hsb=Color.RGBtoHSB( (int)getRgbMin()[0], (int)getRgbMin()[1], (int)getRgbMin()[2], null);
-        
-        float hue_grades=((float)Math.toDegrees(hsb[0]));
+        float hue_grades=getRgbMin()[0];
         
         float delta_grade= grades/(float)umbrales.length;
+        float hue_new=hue_grades+(delta_grade*classe);
         
-        rgb=Color.HSBtoRGB((float)((hue_grades+(delta_grade*classe))/360), hsb[1], hsb[2]);
+        // The values for Saturation and brightness are between 0 and 1
+        // By this reason is necessary divide them by 100
+        rgb=Color.HSBtoRGB(hue_new/360, getRgbMin()[1] > 1 ? getRgbMin()[1]/100 : getRgbMin()[1], getRgbMin()[2] > 1 ? getRgbMin()[2]/100 : getRgbMin()[2]);
         return rgb | 0xFF000000 ;
     }
     
@@ -92,8 +93,7 @@ public abstract class HarmonyColorManager  extends ColorManager {
         int width = 100;
         int height = umbrales.length * line +line;
         
-        BufferedImage image = new BufferedImage(width, height,
-                BufferedImage.TYPE_INT_ARGB);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         
         Graphics2D graphics = (Graphics2D) image.getGraphics();
         
@@ -106,45 +106,7 @@ public abstract class HarmonyColorManager  extends ColorManager {
         //graphics.drawString(descripcion, 5, (line - recHeight) / 2 + recHeight);
         
         int valorMinimo = (int) this.getMin();
-        //int valorMax= (int) this.getMax();
         
-        /*if(valorMax==1){
-        height = valorMax * line ;
-        for (int i = 0; i < umbrales.length; i+=2) {
-        if(valorMinimo!=0){
-        Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
-        graphics.setColor(color);
-        graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
-        graphics.setColor(Color.BLACK);
-        graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
-        ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + valorMinimo + " " );
-        cont += line;
-        }
-        valorMinimo = (int) umbrales[i];
-        
-        }
-        
-        return image;
-        
-        }
-        else if(valorMax==2){
-        height = valorMax * line ;
-        for (int i = 0; i < umbrales.length; i++) {
-        if(valorMinimo!=0){
-        Color color = new Color(getRGB(umbrales[i] - (float) Math.pow(10, -8)));
-        graphics.setColor(color);
-        graphics.fillRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight);
-        graphics.setColor(Color.BLACK);
-        graphics.drawRect(5, (line - recHeight) / 2 + cont, recWidth,recHeight );
-        ColorManager.drawYCenteredString(5, (line -6)+ cont, graphics, + (int)umbrales[i] + " " );
-        cont += line;
-        }
-        valorMinimo = (int) umbrales[i];
-        }
-        return image;
-        
-        }
-        else{*/
         for (int i = 0; i < umbrales.length; i++) {
             System.out.println("umbral " + umbrales[i]);
             if(valorMinimo!=0){
@@ -165,8 +127,6 @@ public abstract class HarmonyColorManager  extends ColorManager {
                 valorMinimo = (int) umbrales[i];
         }
         return image;
-        //}
-        
         
     }
     
